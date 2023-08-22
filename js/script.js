@@ -9,6 +9,12 @@ $(document).ready(function() {
 
     // Escucha el evento 'change' del input de archivo
     csvFileInput.addEventListener('change', (event) => {
+        // Verificar si se seleccionó un archivo
+        if (csvFileInput.files.length > 0) {
+            // Redireccionar a otra página
+            window.location.href = 'home.html';
+          }
+
         const file = event.target.files[0]; // Obtén el archivo seleccionado
   
         // Lee el archivo usando FileReader

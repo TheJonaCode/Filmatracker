@@ -6,8 +6,7 @@ body {
 /*INDEX - GET FILE*/
 .instructions{
     width: 100%;
-    height: 680px;
-    background-color: #fff;
+    height: 620px;
 }
 
 .uploadFile{
@@ -52,9 +51,74 @@ body {
 
  /*Instructions*/
  .howitworks{
-    width: 98%;
-    height: 100px;
-    background-color: #3a506b;
+    width: 96%;
+    height: 500px;
+    margin-left: 2%;
+ }
+
+ .howitworks-text{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f4f6f6;
+    font-family: 'Poppins', sans-serif;
+ }
+
+ .inst-group{
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+ }
+ .inst-element{
+    width: 45%;
+ }
+ .inst-space{
+    width: 10%;
+ }
+ .inst-img{
+    height: 70%;
+    border-radius: 8%;
+ }
+
+ .inst-img img{
+    width: 90%;
+    height: 90%;
+    border-radius: 8%;
+    margin: 5%;
+ }
+ .inst-txt{
+    height: 30%;
+ }
+
+ .inst-txt p,
+ .subinst-txt p{
+    font-size: 14px;
+    color: #f4f6f6;
+    font-family: 'Poppins', sans-serif;
+ }
+
+ .inst-subgroup{
+    width: 100%;
+    height: 200px;
+    margin-top: 5%;
+ }
+
+ .subinst-img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+ }
+
+ .subinst-img img{
+    width: 40%;
+    height: 40%;
+    border-radius: 8%;
+    margin: 5%;
+ }
+
+ .subinst-txt p{
+    text-align: center;
  }
 
 /* TEXTOS */
