@@ -3,6 +3,60 @@ body {
     background-color: #0b132b;
 }
 
+/*INDEX - GET FILE*/
+.instructions{
+    width: 100%;
+    height: 680px;
+    background-color: #fff;
+}
+
+.uploadFile{
+    width: 80%;
+    height: 100px;
+    margin-left: 10%;
+    margin-top: 15%;
+    display: flex;
+    justify-content: center;
+}
+/*Input File*/
+.file{
+    opacity: 0;
+  position: absolute;
+}
+
+/*Fake Input File*/
+.filupp > input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
+
+.filupp {
+  position: relative;
+  background: #57cc99;
+  display: block;
+  padding: 1em;
+  font-size: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  height: 3.5em;
+  color: #1b4332;
+  cursor: pointer;
+ }
+
+ /*Instructions*/
+ .howitworks{
+    width: 98%;
+    height: 100px;
+    background-color: #3a506b;
+ }
+
 /* TEXTOS */
 .text__highligth {
      color: #6fffe9;
@@ -37,6 +91,7 @@ body {
 .profPic img {
     width: 110px;
     height: 110px;
+    border-radius: 100%;
 }
 
 .user-title{

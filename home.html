@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmatracker</title>
+    <!--STYLES CSS-->
+    <link rel="stylesheet" href="./css/styles.css">
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <!--Fuentes-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,700,700i" rel="stylesheet">
+</head>
+
+<body style="background-color: #0b132b;">
+
+    <!-- Cargar el archivo CSV -->
+   <input type="file" id="csvFileInput">
+
+    <!-- HOME -->
+    <div class="visual">
+        <div class="foto">
+            <div class="profPic">
+                <img src="./media/user-icon.jpg"> 
+            </div>
+        </div>
+        <h3 class="user-title">User's Info</h3>
+        <div class="controls">
+            <h3>Filters</h3>
+            <div class="filt-group">
+                <div class="filt-element"></div>
+                <div class="filt-space"></div>
+                <div class="filt-element"></div>
+            </div>
+            <div class="filt-group">
+                <div class="filt-element"></div>
+                <div class="filt-space"></div>
+                <div class="filt-element"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="summary">
+        <div class="movie-group">
+            <div class="movie-element">
+                <div class="element-title">
+                    <h6>Most Watched</h6>
+                </div>
+                <div class="movie-img">
+                    <img src="./media/no_image.jpg">
+                </div>
+                <div class="element-txt">
+                    <h6>N Times</h6>
+                </div>
+            </div>
+            <div class="summary-space"></div>
+            <div class="movie-element">
+                <div class="element-title">
+                    <h6>First Watched</h6>
+                </div>
+                <div class="movie-img">
+                    <img src="./media/no_image.jpg">
+                </div>
+                <div class="element-txt">
+                    <h6>Movie Title</h6>
+                </div>
+            </div>
+        </div>
+        <div class="movie-group">
+            <div class="movie-element">
+                <div class="element-title">
+                    <h6>50°</h6>
+                </div>
+                <div class="movie-img">
+                    <img src="./media/no_image.jpg">
+                </div>
+                <div class="element-txt">
+                    <h6>Movie Title</h6>
+                </div>
+            </div>
+            <div class="summary-space"></div>
+            <div class="movie-element">
+                <div class="element-title">
+                    <h6>100°</h6>
+                </div>
+                <div class="movie-img">
+                    <img src="./media/no_image.jpg">
+                </div>
+                <div class="element-txt">
+                    <h6>Movie Title</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+        <h4>User's Stats</h4>
+        <!-- Plattform -->
+        <div class="plattforms">
+            <h6>Plattform</h6>
+            <div class="plattform-group">
+                <div class="plattform-element">
+                    <div class="plattform-icon">
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="plattform-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+                <div class="plattform-space"></div>
+                <div class="plattform-element">
+                    <div class="plattform-icon">
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="plattform-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+                <div class="plattform-space"></div>
+                <div class="plattform-element">
+                    <div class="plattform-icon">
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="plattform-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+                <div class="plattform-space"></div>
+                <div class="plattform-element">
+                    <div class="plattform-icon">
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="plattform-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Genre -->
+        <div class="genres">
+            <h6>Genres</h6>
+            <div class="genre-group">
+                <div class="genre-element">
+                    <div class="genre-icon">
+                        <div class="genre-title">
+                            <h6>Action</h6>
+                        </div>
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="genre-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+                <div class="genre-space"></div>
+                <div class="genre-element">
+                    <div class="genre-icon">
+                        <div class="genre-title">
+                            <h6>Genre Title</h6>
+                        </div>
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="genre-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+                <div class="genre-space"></div>
+            </div>
+        </div>
+        <!-- Director -->
+        <div class="directors">
+            <h6>Directors</h6>
+            <div class="director-group">
+                <div class="director-element">
+                    <div class="director-icon">
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="director-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+                <div class="director-space"></div>
+                <div class="director-element">
+                    <div class="director-icon">
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="director-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+                <div class="director-space"></div>
+                <div class="director-element">
+                    <div class="director-icon">
+                        <img src="./media/no_image.jpg">
+                    </div>
+                    <div class="director-count">
+                        <h6>N.#</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p class="footer__description">
+            Filmatracker 2023
+            <br>
+            All Rights Reserved
+        </p>
+    </div>
+
+    <!--SCRIPTS JS-->
+    <!--JQuery-->
+    <script src="./js/jquery-3.5.1.slim.min.js"></script>
+    <!--Bootstrap-->
+    <script src="./js/bootstrap.bundle.js"></script>
+    <!-- SheetJS -->
+    <script lang="javascript" src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
+    <!--Mis Scripts-->
+    <script language="JavaScript" type="text/javascript" src="./js/script.js"></script>
+</body>
+
+</html>
