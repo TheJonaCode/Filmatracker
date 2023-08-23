@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     // Importa la biblioteca
     const XLSX = window.XLSX;
-    
+
     document.getElementById('csvFileInput').addEventListener('change', handleFileSelect);
 
     function handleFileSelect(event) {
@@ -21,4 +21,5 @@ $(document).ready(function() {
 
         reader.readAsArrayBuffer(file);
     }
+
 });
