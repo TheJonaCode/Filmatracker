@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+    // ----- OBTENIENDO JSON DE DIARY.EXCEL
     const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         const encodedData = urlParams.get('data');
@@ -22,17 +22,26 @@ $(document).ready(function() {
          const extractedDate = excelDate.toDateString().match(/[A-Z][a-z]{2} \d{2} \d{4}/)[0];
          return extractedDate;
         }
-
+          
         // ----- DOM ELEMENTS
-        const mwatched = document.querySelector("#mwatched-title"); //Most Watched
-        const first = document.querySelector("#first-title"); //1 Watched
-        const fifty = document.querySelector("#fifty-title"); //50  Watched
-        const cien = document.querySelector("#cien-title"); //100 Watched
+        //Most Watched
+        const mwatched = document.querySelector("#mwatched-title"); //Title
+        const mwatchedP = document.querySelector("#mwatched-poster"); //Poster
+        //1 Watched
+        const first = document.querySelector("#first-title"); //Title
+        const firstP = document.querySelector("#first-poster"); //Poster
+        //50 Watched
+        const fifty = document.querySelector("#fifty-title"); //Title
+        const fiftyP = document.querySelector("#fifty-poster"); //Poster
+        //100 Watched
+        const cien = document.querySelector("#cien-title"); //Title
+        const cienP = document.querySelector("#cien-poster"); //Poster
 
 
         // ----- SHOWING INFO
 
          //MOST WATCHED
+         // Title ***
          //Objeto para almacenar las ocurrencias de cada dato
          const countMap  = {}
          // Recorrer el JSON y contar las ocurrencias
@@ -57,23 +66,73 @@ $(document).ready(function() {
            //console.log(`El dato más repetido es: ${mostRepeatedData} (${maxCount} veces)`);
            mwatched.innerHTML = `${mostRepeatedData} (${maxCount} times)`;
 
+           //Poster
+           async function mostwPoster(){
+            const movieposter = await getAMovie(mostRepeatedData);
+            //console.log(movieposter);
+            mwatchedP.src=movieposter;
+           }
+           mostwPoster();
+
          //FIRST MOVIE
+         //Title
          const firstMovie = moviesJSON[0].Name;
          const firstDate = moviesJSON[0].WatchedDate;
          const firstFecha = getFecha(firstDate); //Convertir el número de serie en una fecha legible
          first.innerHTML = `${firstMovie} (${firstFecha})`;
+         //Poster
+         async function firstPoster(){
+          const movieposter = await getAMovie(moviesJSON[0].Name);
+          firstP.src=movieposter;
+         }
+         firstPoster();
 
          //50 MOVIE
+         //Title
          const fiftyMovie = moviesJSON[49].Name;
          const fiftyDate = moviesJSON[49].WatchedDate;
          const fiftyFecha = getFecha(fiftyDate); //Convertir el número de serie en una fecha legible
          fifty.innerHTML = `${fiftyMovie} (${fiftyFecha})`;
+         //Poster
+         async function fiftyPoster(){
+          const movieposter = await getAMovie(moviesJSON[49].Name);
+          fiftyP.src=movieposter;
+         }
+         fiftyPoster();
 
          //100 MOVIE
+         //Title
          const cienMovie = moviesJSON[99].Name;
          const cienDate = moviesJSON[99].WatchedDate;
          const cienFecha = getFecha(cienDate); //Convertir el número de serie en una fecha legible
          cien.innerHTML = `${cienMovie} (${cienFecha})`;
+         //Poster
+         async function cienPoster(){
+          const movieposter = await getAMovie(moviesJSON[99].Name);
+          cienP.src=movieposter;
+         }
+         cienPoster();
+
+         // ----- FETCH API THE MOVIE DB ----- OBTENER PELÍCULA (poster)
+        async function getAMovie(movieTitle){
+          const options = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNTk5MjRlZmVmMmZhZTZmYjM2ODUwMzk5YWI5YjEwZCIsInN1YiI6IjVmOGNmN2U5ZWZkM2MyMDAzNjNkZjE5NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ZPxtN7CeIJC14QaE0ktztv1JoKWuq7sFRoX6cgPQTEs'
+            }
+          };
+
+          const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movieTitle}`, options);
+          const data = await res.json();
+          //console.log(data);
+
+          //Obtener Poster
+          const posterurl = 'https://image.tmdb.org/t/p/w500';
+          const moviePoster = posterurl + data.results[0].poster_path;
+          //console.log('POSTER: ' + moviePoster);
+          return moviePoster;
+        }
 
 
     });
