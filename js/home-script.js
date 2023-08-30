@@ -26,15 +26,19 @@ $(document).ready(function() {
         // ----- DOM ELEMENTS
         //Most Watched
         const mwatched = document.querySelector("#mwatched-title"); //Title
+        const mwatchedS = document.querySelector("#mwatched-sub"); //Subtitle
         const mwatchedP = document.querySelector("#mwatched-poster"); //Poster
         //1 Watched
         const first = document.querySelector("#first-title"); //Title
+        const firstS = document.querySelector("#first-sub"); //Subtitle
         const firstP = document.querySelector("#first-poster"); //Poster
         //50 Watched
         const fifty = document.querySelector("#fifty-title"); //Title
+        const fiftyS = document.querySelector("#fifty-sub"); //Subtitle
         const fiftyP = document.querySelector("#fifty-poster"); //Poster
         //100 Watched
         const cien = document.querySelector("#cien-title"); //Title
+        const cienS = document.querySelector("#cien-sub"); //Subtitle
         const cienP = document.querySelector("#cien-poster"); //Poster
 
 
@@ -64,7 +68,8 @@ $(document).ready(function() {
              }
            }
            //console.log(`El dato más repetido es: ${mostRepeatedData} (${maxCount} veces)`);
-           mwatched.innerHTML = `${mostRepeatedData} (${maxCount} times)`;
+           mwatched.innerHTML = `${mostRepeatedData}`;
+           mwatchedS.innerHTML = `(${maxCount} times)`;
 
            //Poster
            async function mostwPoster(){
@@ -79,7 +84,8 @@ $(document).ready(function() {
          const firstMovie = moviesJSON[0].Name;
          const firstDate = moviesJSON[0].WatchedDate;
          const firstFecha = getFecha(firstDate); //Convertir el número de serie en una fecha legible
-         first.innerHTML = `${firstMovie} (${firstFecha})`;
+         first.innerHTML = `${firstMovie}`;
+         firstS.innerHTML = `(${firstFecha})`;
          //Poster
          async function firstPoster(){
           const movieposter = await getAMovie(moviesJSON[0].Name);
@@ -92,7 +98,8 @@ $(document).ready(function() {
          const fiftyMovie = moviesJSON[49].Name;
          const fiftyDate = moviesJSON[49].WatchedDate;
          const fiftyFecha = getFecha(fiftyDate); //Convertir el número de serie en una fecha legible
-         fifty.innerHTML = `${fiftyMovie} (${fiftyFecha})`;
+         fifty.innerHTML = `${fiftyMovie}`;
+         fiftyS.innerHTML = `(${fiftyFecha})`;
          //Poster
          async function fiftyPoster(){
           const movieposter = await getAMovie(moviesJSON[49].Name);
@@ -105,7 +112,8 @@ $(document).ready(function() {
          const cienMovie = moviesJSON[99].Name;
          const cienDate = moviesJSON[99].WatchedDate;
          const cienFecha = getFecha(cienDate); //Convertir el número de serie en una fecha legible
-         cien.innerHTML = `${cienMovie} (${cienFecha})`;
+         cien.innerHTML = `${cienMovie}`;
+         cienS.innerHTML = `(${cienFecha})`;
          //Poster
          async function cienPoster(){
           const movieposter = await getAMovie(moviesJSON[99].Name);
