@@ -1,19 +1,18 @@
 $(document).ready(function() {
 
-    // ----- OBTENIENDO JSON DE DIARY.EXCEL
+    // ----- OBTENIENDO JSON DE DIARY.EXCEL (a través de transmisión en la URL desde index.html)
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const encodedData = urlParams.get('data');
     const decodedData = decodeURIComponent(encodedData);
     const moviesJSON = JSON.parse(decodedData);
-    //console.log(moviesJSON);
+    console.log(moviesJSON);
     
-    //Renombrar Campo (quitando espacio)
+    //Renombrar Campo (quitando espacio en Watched Date)
     for (const item of moviesJSON) {
       item.WatchedDate = item['Watched Date'];
       delete item['Watched Date'];
     }
-    console.log(moviesJSON);
 
     //Obtener fecha corecta
     function getFecha (dateWatched){
@@ -132,8 +131,12 @@ $(document).ready(function() {
 
       const res = await fetch(`https://api.themoviedb.org/3/search/movie?query=${movieTitle}`, options);
       const data = await res.json();
-      //console.log(data);
-      return data;
+
+      if (data.results && data.results.length > 0) {
+        return data.results[0]; // Devuelve solo el primer elemento del arreglo
+      } else {
+        return null; // Manejo en caso de que no se encuentren resultados
+      }
     }
     //fetchMovie('Top Gun');
 
@@ -144,11 +147,31 @@ $(document).ready(function() {
       //console.log(movieInfo)
       //Obtener Poster
       const posterurl = 'https://image.tmdb.org/t/p/w500';
-      const moviePoster = posterurl + movieInfo.results[0].poster_path;
+      const moviePoster = posterurl + movieInfo.poster_path;
       //console.log('POSTER: ' + moviePoster);
       return moviePoster;
     }
     //getPoster('Back To The Future');
 
+    // ----- FETCH + OBTENER POSTER
+    async function genreCount(){
+      const genreCounts = {}; // Objeto para almacenar las cuentas de géneros
 
-    });
+      // Recorriendo las películas y contando los géneros
+      for (const item of moviesJSON) {
+        const name = item.Name;
+        const movieInfo = await fetchMovie(name);
+        console.log(movieInfo);/*
+        const genre = movieInfo.original_title;
+        if (genreCounts[genre]) {
+          genreCounts[genre]++;
+        } else {
+          genreCounts[genre] = 1;
+        }*/
+      }
+/*
+      console.log(genreCounts);*/
+    }
+    genreCount();
+
+});
