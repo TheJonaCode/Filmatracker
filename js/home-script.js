@@ -121,6 +121,7 @@ $(document).ready(function() {
 
     // ----- FETCH API THE MOVIE DB
     async function fetchMovie(movieTitle){
+      
       const options = {
         method: 'GET',
         headers: {
@@ -134,13 +135,18 @@ $(document).ready(function() {
 
       if (data.results && data.results.length > 0) {
         return data.results[0]; // Devuelve solo el primer elemento del arreglo
-      } else {
-        return null; // Manejo en caso de que no se encuentren resultados
+      } else {        
+        // Manejo en caso de que no se encuentren resultados
+        //console.log(movieTitle);
+        return {
+          title : movieTitle,
+          genre_ids: [0]
+        };
       }
     }
-    //fetchMovie('Top Gun');
+    //fetchMovie('LÃ©on: The Professional');
 
-    // ----- FETCH + OBTENER POSTER
+    // ----- OBTENER POSTER
     async function getPoster(movieTitle){
       pelicula = movieTitle;
       movieInfo = await fetchMovie(pelicula);
@@ -153,7 +159,31 @@ $(document).ready(function() {
     }
     //getPoster('Back To The Future');
 
-    // ----- FETCH + OBTENER POSTER
+    // ----- CONTAR GÉNEROS
+    // Objeto que mapea IDs de género a nombres de género
+    const genreIdToName = {
+      0: 'Default',
+      28: 'Action',
+      12: 'Adventure',
+      16: 'Animation',
+      35: 'Comedy',
+      80: 'Crime',
+      99: 'Documentary',
+      18: 'Drama',
+      10751: 'Family',
+      14: 'Fantasy',
+      36: 'History',
+      27: 'Horror',
+      10402: 'Music',
+      9648: 'Mystery',
+      10749: 'Romance',
+      878: 'Science Fiction',
+      10770: 'TV Movie',
+      53: 'Thriller',
+      10752: 'War',
+      37: 'Western'
+    };
+
     async function genreCount(){
       const genreCounts = {}; // Objeto para almacenar las cuentas de géneros
 
@@ -161,16 +191,27 @@ $(document).ready(function() {
       for (const item of moviesJSON) {
         const name = item.Name;
         const movieInfo = await fetchMovie(name);
-        console.log(movieInfo);/*
-        const genre = movieInfo.original_title;
-        if (genreCounts[genre]) {
-          genreCounts[genre]++;
-        } else {
-          genreCounts[genre] = 1;
-        }*/
+        //console.log(movieInfo);
+        const genres = movieInfo.genre_ids;
+        for (const genre of genres) {
+          if (genreCounts[genre]) {
+            genreCounts[genre]++;
+          } else {
+            genreCounts[genre] = 1;
+          }
+        }
       }
-/*
-      console.log(genreCounts);*/
+
+      //console.log(genreCounts);
+
+      // Después de contar los géneros, mostrar las cuentas con nombres de género
+      for (const genreId in genreCounts) {
+        if (genreIdToName.hasOwnProperty(genreId)) {
+          const genreName = genreIdToName[genreId];
+          const count = genreCounts[genreId];
+          console.log(`${genreName}: ${count}`);
+        }
+      }
     }
     genreCount();
 
