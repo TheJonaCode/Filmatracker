@@ -3,6 +3,13 @@ body {
     background-color: #0b132b;
 }
 
+.redirect{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f4f6f6;
+    font-family: 'Poppins', sans-serif;
+}
 /*INDEX - GET FILE*/
 .instructions{
     width: 100%;

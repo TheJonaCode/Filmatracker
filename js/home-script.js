@@ -41,7 +41,6 @@ $(document).ready(function() {
     const cienS = document.querySelector("#cien-sub"); //Subtitle
     const cienP = document.querySelector("#cien-poster"); //Poster
 
-
     // ----- SHOWING INFO
 
     //MOST WATCHED
@@ -69,6 +68,7 @@ $(document).ready(function() {
     //console.log(`El dato más repetido es: ${mostRepeatedData} (${maxCount} veces)`);
     mwatched.innerHTML = `${mostRepeatedData}`;
     mwatchedS.innerHTML = `(${maxCount} times)`;
+
     //Poster
     async function mostwPoster(){
       const movieposter = await getPoster(mostRepeatedData);
@@ -213,6 +213,6 @@ $(document).ready(function() {
         }
       }
     }
-    genreCount();
+    //genreCount();
 
 });
